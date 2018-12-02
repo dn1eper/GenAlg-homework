@@ -1,15 +1,20 @@
 from json import dumps
 from collections import OrderedDict
-from GenAlg1 import solve as myGenAlg
+from GenAlg import GenAlg
+from MyGenAlg import MyGenAlg
 
 def main():
     # read data from file
     bag, items = load("2.txt")
     # find solution
-    res1 = myGenAlg(bag, items)
+    genAlg = GenAlg(bag, items)
+    myGenAlg = MyGenAlg(bag, items)
+    res1 = genAlg.solve()
+    res2 = myGenAlg.solve()
     # form the result
     result = {
-        "1": nice(res1, items)
+        "1": nice(res1, items),
+        "2": nice(res2, items)
     }
     # print result in json format
     print(dumps(result, indent=4))
